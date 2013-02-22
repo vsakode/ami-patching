@@ -1,0 +1,36 @@
+This directory contains the files for the creating ami from existing ami Regression testing
+1) patch-ami.sh (Main script)
+2) source-ec2.sh (Source this script before running main script)
+3) patch-ami-input (redirect this file to existing_ami.sh if running manually)
+4) test-daily.sh (ready to run daily cron to test this process)
+
+
+Modify the test_input file if required:
+Entries in the test input file are as follows (One per line)
+##########################
+existing ami_id to boot
+ssh key name to boot
+ssh key path on local machine
+existing aki_id to boot (otional; leave this line blank if not providing this parameter)
+existing ari_id to boot (otional; leave this line blank if not providing this parameter)
+availability zone
+instance type
+extra rpms to be installed on the machine (provide .tar.gz/.tgz file)
+user script to modify the services and rpms on the ami
+name for your new ami on cloud
+###########################
+
+The cron 'test_ami.sh' does the following things:
+1)      Boot up the existing ami
+2)      Test ssh connectivity
+3)      Transfer the private and certificate key files to ami
+4)      Transfer the extra rpms to the ami and install
+5)      Transfer the user script to the ami and run
+6)      Install ec2-ami tools on the ami
+7)      Bundle the ami
+8)      Upload and register the bundle and generate new ami_id
+9)      Boot up new ami
+10)     Test ssh on new ami
+11)     Terminate the old and new booted instances
+12)     Deregister and delete the new ami
+

@@ -1,0 +1,10 @@
+ami-id
+demo
+demo.pem
+
+
+us-east-1c
+m1.large
+/path/to/rpm.tgz
+/path/to/modify-services.sh
+rhel_5.4_x86_64
