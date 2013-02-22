@@ -20,7 +20,7 @@ user script to modify the services and rpms on the ami
 name for your new ami on cloud
 ###########################
 
-The cron 'test_ami.sh' does the following things:
+The cron 'test-daily.sh' does the following things:
 1)      Boot up the existing ami
 2)      Test ssh connectivity
 3)      Transfer the private and certificate key files to ami
